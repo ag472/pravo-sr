@@ -1,0 +1,6 @@
+{
+  "name": "Právo SR",
+  "description": "Moderný čítač a audio prehrávač slovenskej legislatívy a Zbierky zákonov SR s hlasovou syntézou AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

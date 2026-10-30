@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-editorial: 'Literata', Georgia, Cambria, 'Times New Roman', serif;
+    --font-heading: 'Cinzel', 'Literata', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-editorial {
+  font-family: var(--font-editorial);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Custom smooth scroll and active highlighting */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Highlight glow for currently playing paragraph */
+@keyframes unit-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.4), 0 4px 20px -2px rgba(217, 119, 6, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.7), 0 8px 24px -2px rgba(217, 119, 6, 0.25);
+  }
+}
+
+.active-playing-unit {
+  animation: unit-pulse 2.5s infinite ease-in-out;
+}
