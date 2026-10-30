@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build",
-    "start": "tsx server.ts",
+    "start": "node server.ts",
     "preview": "vite preview",
     "clean": "rm -rf dist server.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -t true",
+    "predeploy": "BASE_PATH=./ vite build",
+    "deploy": "gh-pages -d dist --dotfiles",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

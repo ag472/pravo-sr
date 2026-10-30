@@ -1,12 +1,18 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-export default defineConfig(({ command }) => {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default defineConfig(() => {
+  const base = process.env.BASE_PATH || '/';
+
   return {
-    base: command === 'build' ? (process.env.BASE_PATH || './') : '/',
+    base,
     plugins: [
       react(),
       tailwindcss(),
@@ -14,7 +20,7 @@ export default defineConfig(({ command }) => {
         registerType: 'autoUpdate',
         includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon.svg', '404.html', '.nojekyll'],
         manifest: {
-          id: './',
+          id: base,
           name: 'Právo SR – Slovenská legislatíva & Audio',
           short_name: 'Právo SR',
           description: 'Moderný čítač a audio prehrávač slovenskej legislatívy a Zbierky zákonov SR s hlasovou syntézou AI.',
@@ -22,24 +28,24 @@ export default defineConfig(({ command }) => {
           background_color: '#0f172a',
           display: 'standalone',
           orientation: 'portrait',
-          start_url: './',
-          scope: './',
+          start_url: base,
+          scope: base,
           categories: ['books', 'education', 'news'],
           icons: [
             {
-              src: './pwa-192x192.png',
+              src: `${base.replace(/\/$/, '')}/pwa-192x192.png`,
               sizes: '192x192',
               type: 'image/png',
               purpose: 'any',
             },
             {
-              src: './pwa-512x512.png',
+              src: `${base.replace(/\/$/, '')}/pwa-512x512.png`,
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any',
             },
             {
-              src: './pwa-maskable-512x512.png',
+              src: `${base.replace(/\/$/, '')}/pwa-maskable-512x512.png`,
               sizes: '512x512',
               type: 'image/png',
               purpose: 'maskable',
